@@ -5,12 +5,13 @@
     require_once './Models/BaseModel.php';
 
     $controllerName = ucfirst(strtolower($_REQUEST['controller'])) . 'Controller';
-    $actionName = ucfirst($_REQUEST['action']);
+    $actionName = $_REQUEST['action'];
+    $id = $_REQUEST['id'] ?? null;
 
 
     require_once "./Controllers/${controllerName}.php";
 
     $controllerObject = new $controllerName;
-    $controllerObject->$actionName();
+    $controllerObject->$actionName($id);
 
 ?>
